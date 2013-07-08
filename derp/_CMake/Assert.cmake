@@ -23,7 +23,7 @@ function( check_equal left right result )
 				LIST( GET left ${i} temp_left )
 				LIST( GET right ${i} temp_right )
 
-				if( temp_left EQUAL temp_right )
+				if( temp_left STREQUAL temp_right )
 				else()
 					MESSAGE( STATUS "${temp_left} != ${temp_right}" )
 					SET( list_elements_equal 0 )
@@ -39,7 +39,7 @@ function( check_equal left right result )
 
 		else()
 
-			if( left EQUAL right )
+			if( left STREQUAL right )
 				SET( ${result} 1 PARENT_SCOPE )
 			else()
 				SET( ${result} 0 PARENT_SCOPE )
@@ -84,6 +84,11 @@ macro( run_assert_sanity_checks )
 
 	#	Simple integers
 	#
+
+	#	Assert Null
+	#
+
+	ASSERT_EQUAL( "" "" )
 
 	#	Assert Equal
 	#
